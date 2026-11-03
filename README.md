@@ -1,41 +1,39 @@
-# Chatbot de Triagem do SAV
+# Sistema de Triagem e Priorização de Chamados (SAV) com GLPI
 
-Sistema inteligente de triagem e atendimento para a Secretaria Virtual Acadêmica (SAV) da FATEC Barueri, baseado em um agente de IA integrado ao SAV via API.
+Proposta de implementação e configuração do sistema **GLPI** para a Secretaria Acadêmica Virtual (SAV) da FATEC Barueri, visando a triagem, categorização e priorização no atendimento aos alunos.
 
-## Problema
+## O Problema
 
-O SAV é o principal canal entre alunos e secretaria acadêmica, mas funciona com uma fila estritamente sequencial (FIFO): dúvidas simples e recorrentes (limite de faltas, notas, calendário, grade) competem com casos graves (problemas de matrícula, contestações). Como resultado, chamados previstos para 3 a 5 dias chegam a levar de 7 a 9 dias, principalmente em períodos de pico, como início de semestre, provas e rematrícula.
+Atualmente, o contacto entre os estudantes e a secretaria ocorre através de um portal (baseado em osTicket) que funciona com uma fila estritamente sequencial (ordem de chegada). 
+* Dúvidas recorrentes (limite de faltas, calendário, notas) disputam a mesma fila que solicitações complexas ou urgentes (trancamento de matrícula).
+* Existe um prazo único de devolutiva de até 5 dias úteis para qualquer caso.
+* Não há possibilidade de réplica no mesmo ticket, obrigando o aluno a abrir um novo chamado caso a dúvida persista.
 
-## Solução
+## A Solução (GLPI)
 
-Um chatbot posicionado antes da abertura do ticket, funcionando 24/7 como primeira linha de atendimento:
+Adoção do GLPI 11, um sistema de gestão de chamados de código aberto alinhado às boas práticas do ITIL, para organizar e triar o atendimento. A nova estrutura oferece:
 
-- Identifica a intenção do aluno e responde de imediato às dúvidas recorrentes, com base em informações oficiais da instituição.
-- Encaminha ao atendimento humano (handoff) quando:
-  - a confiança da resposta é baixa (Confidence Threshold);
-  - há gatilhos de urgência institucional;
-  - detecta frustração do usuário (ex.: loop de perguntas).
-- No encaminhamento, o ticket já chega com o contexto da conversa e uma prioridade sugerida.
-
-O chatbot não substitui a equipe do SAV: ele filtra o que é repetitivo e entrega uma fila menor e mais organizada.
+* **Base de Conhecimento e Autoatendimento:** Respostas a dúvidas recorrentes disponíveis numa base pública, reduzindo a abertura de chamados repetitivos.
+* **Matriz de Prioridade:** Cálculo automático da prioridade combinando a urgência informada pelo aluno e o impacto definido pelo atendente.
+* **Acordos de Nível de Serviço (SLA):** Prazos de resposta e solução adequados a cada categoria, substituindo o prazo único atual.
+* **Continuidade do Atendimento:** Possibilidade de acompanhamentos (réplicas) dentro do próprio chamado.
 
 ## Benefícios
 
-- **Alunos:** respostas imediatas, sem depender de expediente ou posição na fila.
-- **Equipe do SAV:** menos tickets repetitivos e atendimento priorizado por urgência.
-- **Instituição:** ganho de eficiência sem ampliar a equipe e respostas padronizadas.
+* **Alunos:** Respostas imediatas para dúvidas simples via autoatendimento e resolução mais rápida para casos urgentes.
+* **Equipa do SAV:** Redução de tarefas repetitivas e receção de chamados mais completos, classificados por formulários específicos e regras de negócio.
+* **Instituição:** Ganho de eficiência sem necessidade de aumentar a equipa de atendimento, além da geração de indicadores e estatísticas nativas.
 
 ## Objetivos
 
-**Geral:** desenvolver e prototipar um sistema de triagem e atendimento para o SAV, com agente de IA integrado via API, que automatize dúvidas recorrentes e escale chamados críticos para a equipe administrativa.
+**Geral:** Propor e configurar o GLPI como ferramenta de triagem, priorização e controle dos chamados da Secretaria Acadêmica Virtual da Fatec Barueri.
 
 **Específicos:**
-
-1. **Mapeamento e classificação:** levantar requisitos funcionais e não funcionais do fluxo atual e classificar as intenções mais frequentes (notas, calendário, faltas) para compor a base de conhecimento.
-2. **Integração de sistemas:** definir a arquitetura de integração via API entre a interface de conversação e a base de dados do SAV, de forma automatizada e segura.
-3. **Engenharia de escalonamento:** configurar regras de transferência de contexto ao suporte humano (confiança mínima, gatilhos de criticidade e detecção de frustração).
-4. **Painel administrativo:** prototipar um painel que organize a fila de tickets escalados por prioridade, com resumo da intenção e histórico da conversa com a IA.
-5. **Validação do MVP:** avaliar a eficácia por meio de testes funcionais, medindo a redução no tempo de atendimento e a capacidade do bot de resolver chamados sem intervenção humana.
+1. Caracterizar o funcionamento do sistema atual e identificar as principais dificuldades de alunos e funcionários.
+2. Definir categorias, critérios de prioridade e prazos (SLAs) adequados à secretaria.
+3. Estruturar uma base de conhecimento com as dúvidas mais frequentes.
+4. Configurar um ambiente de demonstração funcional do GLPI (formulários, regras de negócio e SLAs).
+5. Preparar a avaliação da solução com os utilizadores e a reprodução da interface da SAV para o TG II.
 
 ## Equipe
 
