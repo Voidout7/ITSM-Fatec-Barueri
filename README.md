@@ -1,4 +1,4 @@
-# Sistema de Triagem e Priorização de Chamados (SAV) com GLPI
+# UTILIZAÇÃO DO GLPI PARA A GESTÃO DE CHAMADOS TÉCNICOS NA FATEC BARUERI
 
 Proposta de implementação e configuração do sistema **GLPI** para a Secretaria Acadêmica Virtual (SAV) da FATEC Barueri, visando a triagem, categorização e priorização no atendimento aos alunos.
 
