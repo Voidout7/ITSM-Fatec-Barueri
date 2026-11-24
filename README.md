@@ -1,39 +1,34 @@
-# UTILIZAÇÃO DO GLPI PARA A GESTÃO DE CHAMADOS TÉCNICOS NA FATEC BARUERI
+# Utilização do GLPI para a Gestão de Chamados Técnicos na Fatec Barueri
 
-Proposta de implementação e configuração do sistema **GLPI** para a Secretaria Acadêmica Virtual (SAV) da FATEC Barueri, visando a triagem, categorização e priorização no atendimento aos alunos.
+Projeto de pesquisa (TG I) que analisa ferramentas de gerenciamento de serviços de TI (ITSM) e seleciona o **GLPI** para estruturar o atendimento técnico e o controle de ativos da área de TI da Fatec Barueri.
 
 ## O Problema
-
-Atualmente, o contacto entre os estudantes e a secretaria ocorre através de um portal (baseado em osTicket) que funciona com uma fila estritamente sequencial (ordem de chegada). 
-* Dúvidas recorrentes (limite de faltas, calendário, notas) disputam a mesma fila que solicitações complexas ou urgentes (trancamento de matrícula).
-* Existe um prazo único de devolutiva de até 5 dias úteis para qualquer caso.
-* Não há possibilidade de réplica no mesmo ticket, obrigando o aluno a abrir um novo chamado caso a dúvida persista.
+Atualmente, a equipe de TI da Fatec Barueri (composta por três profissionais) atende entre 1.500 e 2.000 usuários (alunos, professores e funcionários) e mantém de cinco a seis laboratórios, cerca de 400 computadores, oito impressoras, switches e mais de 20 pontos de acesso sem fio, operando sem um sistema centralizado:
+- **Canais dispersos e registros voláteis:** As solicitações chegam pessoalmente, por e-mail ou são anotadas por professores em um caderno no balcão de atendimento, trocado a cada semestre.
+- **Falta de indicadores:** Não há contabilização do volume mensal de chamados nem medição do tempo de atendimento.
+- **Ausência de histórico dos equipamentos:** O controle patrimonial é feito em planilha de Excel sem registro de manutenções anteriores, dificultando identificar falhas recorrentes (como fonte ou memória) e justificar pedidos de peças ou recursos.
 
 ## A Solução (GLPI)
-
-Adoção do GLPI 11, um sistema de gestão de chamados de código aberto alinhado às boas práticas do ITIL, para organizar e triar o atendimento. A nova estrutura oferece:
-
-* **Base de Conhecimento e Autoatendimento:** Respostas a dúvidas recorrentes disponíveis numa base pública, reduzindo a abertura de chamados repetitivos.
-* **Matriz de Prioridade:** Cálculo automático da prioridade combinando a urgência informada pelo aluno e o impacto definido pelo atendente.
-* **Acordos de Nível de Serviço (SLA):** Prazos de resposta e solução adequados a cada categoria, substituindo o prazo único atual.
-* **Continuidade do Atendimento:** Possibilidade de acompanhamentos (réplicas) dentro do próprio chamado.
+Após uma análise comparativa entre quatro ferramentas de ITSM (ServiceNow, Jira Service Management, GLPI e OTRS/Znuny), o **GLPI** foi selecionado (atingindo 90 de 100 pontos na matriz de decisão) por ser um software livre (licença GNU GPL), sem custo de licenciamento, sem limite de técnicos e compatível com a infraestrutura local da unidade. Alinhado às boas práticas do ITIL, o sistema oferece:
+- **Central de Serviços (Ponto Único de Contato):** Registro, triagem e acompanhamento padronizado de incidentes e requisições via portal com formulários específicos.
+- **Matriz de Prioridade e SLAs:** Cálculo automático de prioridade combinando urgência e impacto (considerando criticidade e número de usuários afetados, como laboratórios completos), além de prazos definidos de atendimento e solução.
+- **Gestão de Ativos e CMDB Integrados:** Inventário automatizado (via GLPI Agent) com vínculo direto entre cada chamado e o equipamento atendido, formando um histórico técnico completo.
+- **Base de Conhecimento e Autoatendimento:** Repositório de soluções para dúvidas e demandas frequentes, como instalação e atualização de softwares.
 
 ## Benefícios
-
-* **Alunos:** Respostas imediatas para dúvidas simples via autoatendimento e resolução mais rápida para casos urgentes.
-* **Equipa do SAV:** Redução de tarefas repetitivas e receção de chamados mais completos, classificados por formulários específicos e regras de negócio.
-* **Instituição:** Ganho de eficiência sem necessidade de aumentar a equipa de atendimento, além da geração de indicadores e estatísticas nativas.
+- **Usuários (Alunos, Professores e Funcionários):** Canal único para abertura de chamados, acompanhamento transparente do status e acesso rápido a orientações de autoatendimento.
+- **Equipe de TI:** Fim das anotações manuais em caderno, rastreabilidade de defeitos repetitivos por máquina e geração de métricas reais para dimensionar a equipe e solicitar componentes.
+- **Instituição:** Implantação sem custo de licença, leveza para operar em servidor próprio de pequena capacidade e governança alinhada ao ITIL.
 
 ## Objetivos
-
-**Geral:** Propor e configurar o GLPI como ferramenta de triagem, priorização e controle dos chamados da Secretaria Acadêmica Virtual da Fatec Barueri.
+**Geral:** Analisar ferramentas de ITSM, pagas e gratuitas, e selecionar a mais adequada para a gestão dos chamados técnicos e dos ativos de TI da Fatec Barueri, considerando funcionalidades, custo e licenciamento.
 
 **Específicos:**
-1. Caracterizar o funcionamento do sistema atual e identificar as principais dificuldades de alunos e funcionários.
-2. Definir categorias, critérios de prioridade e prazos (SLAs) adequados à secretaria.
-3. Estruturar uma base de conhecimento com as dúvidas mais frequentes.
-4. Configurar um ambiente de demonstração funcional do GLPI (formulários, regras de negócio e SLAs).
-5. Preparar a avaliação da solução com os utilizadores e a reprodução da interface da SAV para o TG II.
+1. Identificar ferramentas de ITSM pagas e gratuitas disponíveis no mercado.
+2. Comparar as ferramentas quanto a funcionalidades, gestão de ativos, custo e licenciamento.
+3. Levantar, com a área de TI da Fatec Barueri, a forma atual de recebimento dos chamados técnicos e de controle dos equipamentos, bem como as necessidades da equipe.
+4. Selecionar a ferramenta mais adequada e apresentar os recursos que atendem às necessidades levantadas.
+5. Definir as etapas de implantação da ferramenta a serem realizadas no TG II (instalação em ambiente de homologação, cadastro de ativos, definição de categorias/SLAs, formulários e testes).
 
 ## Equipe
 
@@ -44,7 +39,6 @@ Adoção do GLPI 11, um sistema de gestão de chamados de código aberto alinhad
 | Ian | Front-end e UX | Desenvolvedor |
 | Indaiá | Requisitos, qualidade e documentação | Scrum Master |
 
-## Links
+## Orientação
 
-- [Formulário de Avaliação - Funcionários](https://docs.google.com/forms/d/e/1FAIpQLSdplX-vxtJQnkJo8aCcxSn-VV-2HvkT6UrDKd3g3WWMSBYGYw/viewform)
-- [Formulário de Avaliação - Alunos](https://docs.google.com/forms/d/e/1FAIpQLSd9Qv6oN9sl4DnQyCMVb3nRGv7ra48N-dSmToLwbfOd324Brg/viewform)
+| Prof. Vander Ribeiro Elme | Fatec Barueri (2026) |
