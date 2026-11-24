@@ -41,4 +41,4 @@ Após uma análise comparativa entre quatro ferramentas de ITSM (ServiceNow, Jir
 
 ## Orientação
 
-| Prof. Vander Ribeiro Elme | Fatec Barueri (2026) |
+Prof. Vander Ribeiro Elme - Fatec Barueri (2026)
